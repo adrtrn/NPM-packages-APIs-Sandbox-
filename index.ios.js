@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Chat from './pusherChat/index.js'
 
 
 const FBSDK = require('react-native-fbsdk');
@@ -24,25 +25,7 @@ class UserLogging extends Component {
   render() {
     return (
       <View>
-        <LoginButton
-        style={styles.fbutton}
-          publishPermissions={["publish_actions"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                alert("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("login is cancelled.");
-              } else {
-                AccessToken.getCurrentAccessToken().then(
-                  (data) => {
-                    alert(data.accessToken.toString())
-                  }
-                )
-              }
-            }
-          }
-          onLogoutFinished={() => alert("logout.")}/>
+        <Chat/>
       </View>
     );
   }
